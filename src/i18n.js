@@ -1,8 +1,8 @@
 module.exports = {
   'zh-cn': {
-    description: '暂无数据',
+    description: '按钮',
   },
   en: {
-    description: 'Data is empty.',
+    description: 'Button',
   },
 };

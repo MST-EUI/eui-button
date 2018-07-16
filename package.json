@@ -1,7 +1,7 @@
 {
-  "name": "eui-component-template",
+  "name": "@mistong/eui-button",
   "version": "0.1.0",
-  "description": "EUI component development template",
+  "description": "eui-button component ",
   "main": "dist/index.js",
   "scripts": {
     "start": "eui server",
