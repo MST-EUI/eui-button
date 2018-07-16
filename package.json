@@ -70,6 +70,7 @@
     "webpack-hot-middleware": "^2.22.2"
   },
   "dependencies": {
+    "@mistong/eui-css": "^0.1.2",
     "classnames": "^2.2.6",
     "hoek": "^4.2.1"
   }

@@ -1,16 +1,26 @@
 @charset "UTF-8";
 
-$black:         #000 !default;
-$white:         #FFF !default;
-$red:           #F00 !default;
-$orange:        #FF6103 !default;
-$yellow:        #FFD300 !default;
-$green:         #13CE66 !default;
-$blue:          #2E86FF !default;
-$darkBlue:      #0076E4 !default;
-$lightBlue:     #589EFF !default;
+//colors
+
+$black:             #000 !default;
+$white:             #FFF !default;
+$red:               #F00 !default;
+$orange:            #FF6103 !default;
+$green:             #13CE66 !default;
+
+$yellow:            #FFD300 !default;
+$yellow-lighter:    #FFF9EF !default;
+
+$blue:              #2E86FF !default;
+$blue-dark:         #0076E4 !default;
+$blue-light:        #02A4FF !default;
+$blue-lighter:      #F2FBFF !default;
+
+$gray:              #434F59 !default;
+$gray-light:        #667480 !default;
+$gray-lighter:      #86939D !default;
+$gray-lightest:     #B6C2CC !default;
+$gray-white:        #DFE3EC !default;
+$gray-whiter:       #F8F9FC !default;
 
 
-
-$grayDF:        #DFE3EC !default;
-$grayPrimary:   #434F59 !default;
