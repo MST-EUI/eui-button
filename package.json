@@ -1,6 +1,6 @@
 {
   "name": "@mistong/eui-button",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "eui-button component ",
   "main": "dist/index.js",
   "scripts": {
