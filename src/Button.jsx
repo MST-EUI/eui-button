@@ -1,48 +1,53 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 import isNil from 'lodash/isNil';
-//import i18n from './i18n';
+// import i18n from './i18n';
 
 
-import './style/button.scss';
+// import './style/button.scss';
 
 const { PropTypes } = React;
-//const i18nDefault = 'zh-cn';
+// const i18nDefault = 'zh-cn';
 
 export default class Button extends Component {
   static propTypes = {
-    size: PropTypes.oneOf(['small', 'default', 'large']),
+    prefixcls: PropTypes.string,
+    prefixicon: PropTypes.string,
+    size: PropTypes.oneOf(['small', 'default', 'medium', 'large']),
     disabled: PropTypes.bool,
     className: PropTypes.string,
-    content: PropTypes.string,
-    type: PropTypes.oneOf(['button', 'submit', 'reset','text']),
-    color: PropTypes.oneOf(['blue','green','yellow','red','orange']),
+    htmlType: PropTypes.oneOf(['button', 'submit', 'reset', 'text']),
     onClick: PropTypes.func,
     loading: PropTypes.bool,
     basic: PropTypes.bool,
     href: PropTypes.string,
     icon: PropTypes.string,
-    iconPosition: PropTypes.oneOf(['right', 'left'])
+    iconPosition: PropTypes.oneOf(['right', 'left']),
+    children: PropTypes.node,
+    type: PropTypes.oneOf(['primary', 'secondary', 'normal']),
   };
 
   static defaultProps = {
     prefixcls: 'eui-button',
     prefixicon: 'eui-icon',
-    type: 'button',
+    htmlType: 'button',
     loading: false,
     disabled: false,
     iconPosition: 'left',
-    basic: false
+    basic: false,
+    size: 'default',
+    className: '',
+    onClick: () => {},
+    href: null,
+    icon: '',
+    children: null,
+    type: 'normal',
   };
-
-  constructor(props) {
-    super(props);
-  }
 
   handleClick = (e) => {
     const { onClick, disabled, loading } = this.props;
 
-    if(!disabled && !loading && !!onClick){
+    if (!disabled && !loading && !!onClick) {
       onClick(e);
     }
   }
@@ -54,45 +59,43 @@ export default class Button extends Component {
       className,
       children,
       size,
-      content,
       disabled,
-      type,
-      color,
+      htmlType,
       loading,
       basic,
       icon,
       iconPosition,
+      type,
       ...others
     } = this.props;
 
     const ElementType = (!!this.props.href && !isNil(this.props.href)) ? 'a' : 'button';
-    const AttrType = (!!this.props.href && !isNil(this.props.href)) ? undefined : (type == 'text') ? 'button' : type;
+    const AttrType = (!!this.props.href && !isNil(this.props.href)) ? undefined : (htmlType == 'text') ? 'button' : htmlType;
     const iconName = loading ? 'loading' : icon;
 
 
     const classes = classnames(
       prefixcls,
       className,
+      [`${prefixcls}-${type}`],
       {
-        'small': size == 'small',
-        'large': size == 'large',
-        [`${prefixcls}-${type}`]: type == 'text',
-        [`${prefixcls}-${color}`]: color,
+        small: size === 'small',
+        large: size === 'large',
         [`${prefixcls}-${iconName}`]: (!!loading || !!icon),
-        'basic': basic,
-        'disabled': disabled
-      }
-    )
+        basic,
+        disabled,
+      },
+    );
 
     const iconclass = classnames(
       prefixicon,
       {
         [`${prefixicon}-${iconName}`]: (!!loading || !!icon),
-        [`${prefixicon}-${iconPosition}`]: iconPosition
-      }
-    )
+        [`${prefixicon}-${iconPosition}`]: iconPosition,
+      },
+    );
 
-    const strContent = (!!content && isNil(children)) ? content : children;
+    const strContent = children;
 
 
     return (
@@ -102,9 +105,9 @@ export default class Button extends Component {
         {...others}
         onClick={this.handleClick}
       >
-        {((loading || !!icon) && iconPosition == 'left') && <i className={iconclass} />}
+        {((loading || !!icon) && iconPosition === 'left') && <i className={iconclass} />}
         {strContent}
-        {((loading || !!icon) && iconPosition == 'right') && <i className={iconclass} />}
+        {((loading || !!icon) && iconPosition === 'right') && <i className={iconclass} />}
       </ElementType>
     );
   }

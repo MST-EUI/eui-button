@@ -74,11 +74,11 @@ class Demo extends React.Component {
 
             <h2 className="title">Type & Href</h2>
             <Button content="默认button按钮" target="_blank" />
-            <Button content="submit按钮" type="submit" />
-            <Button content="reset按钮" type="reset" />
+            <Button content="submit按钮" type="primary" >primary 按钮</Button>
+            <Button content="reset按钮" type="secondary" >secondary 按钮</Button>
             <Button content="href按钮" href="#" target="_blank" />
-            <Button content="href链接按钮" href="#" target="_blank" type="text" />
-            <Button content="text按钮" type="text" />
+            <Button content="href链接按钮" href="#" target="_blank" htmlType="text" />
+            <Button content="text按钮" type="normal" >normal 按钮</Button>
 
             <h2 className="title">Click & Loading</h2>
             <Button onClick={this.handleClick} disabled={this.state.disabled}>click me</Button>
