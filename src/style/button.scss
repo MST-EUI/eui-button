@@ -46,32 +46,43 @@ $prefixicon:    'eui-icon' !default;
 .#{$prefix} {
   display: inline-block;
   cursor:pointer;
-  border:0 none;
+  // border:0 none;
   outline: 0;
   vertical-align: baseline;
   font-weight: 400;
   text-align: center;
   text-decoration: none;
-  border-radius: $radius2;
+  // border-radius: $radius2;
   font-size:14px;
   padding: 7px 15px;
-  border:1px solid $gray-white;
+  // border:1px solid $gray-white;
   line-height: 1.5;
   transition: all .3s cubic-bezier(.645,.045,.355,1);
-  color: $gray;
-  background-color: transparent;
+  // color: $gray;
+  // background-color: $white;
 
   &.small {
     font-size: 12px;
-    padding: 3px 8px;
+    padding: 4px 12px;
+  }
+
+  &.medium {
+    padding: 6px 20px;
+    font-size: 14px;
   }
 
   &.large{
     font-size: 16px;
-    padding: 9px 23px;
+    padding: 9px 20px;
   }
 
-  &:hover,&.basic:hover{
+  &.big {
+    padding: 12px 20px;
+    font-size: 18px;
+  }
+
+  //&:hover,
+  &.basic:hover{
     border-color:darken($gray-white,10%);
     color: darken($gray,10%);
   }
@@ -80,11 +91,11 @@ $prefixicon:    'eui-icon' !default;
   &-text {
     color:$gray;
     border:none 0;
-    background-color: none;
-    padding: 3px 0;
+    background-color: transparent;
+    padding:0;
 
     &:hover{
-      background-color: none;
+      background-color: transparent;
       color:$gray;
     }
   }
@@ -95,12 +106,12 @@ $prefixicon:    'eui-icon' !default;
     background-color: transparent;
   }
 
-  &.disabled{
-    background-color:#DFE3EC;
-    cursor: not-allowed;
-    color: $gray-lightest;
-    border-color:#DFE3EC;
-  }
+  // &.disabled{
+  //   background-color:#DFE3EC;
+  //   cursor: not-allowed;
+  //   color: $gray-lightest;
+  //   border-color:#DFE3EC;
+  // }
 
   &-loading{
     opacity: 0.5;

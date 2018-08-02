@@ -1,48 +1,56 @@
-import React, {Component} from 'react';
+import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import isNil from 'lodash/isNil';
-//import i18n from './i18n';
+// import i18n from './i18n';
 
 
 import './style/button.scss';
 
-const { PropTypes } = React;
-//const i18nDefault = 'zh-cn';
+// const i18nDefault = 'zh-cn';
 
 export default class Button extends Component {
   static propTypes = {
-    size: PropTypes.oneOf(['small', 'default', 'large']),
+    prefixcls: PropTypes.string,
+    prefixicon: PropTypes.string,
+    size: PropTypes.oneOf(['small', 'medium', 'large', 'big']),
     disabled: PropTypes.bool,
     className: PropTypes.string,
-    content: PropTypes.string,
-    type: PropTypes.oneOf(['button', 'submit', 'reset','text']),
-    color: PropTypes.oneOf(['blue','green','yellow','red','orange']),
+    text: PropTypes.string,
+    type: PropTypes.oneOf(['primary', 'secondary', 'normal']),
+    htmlType: PropTypes.oneOf(['button', 'submit', 'reset', 'text']),
+    color: PropTypes.oneOf(['blue', 'green', 'yellow', 'red', 'orange']),
     onClick: PropTypes.func,
     loading: PropTypes.bool,
     basic: PropTypes.bool,
     href: PropTypes.string,
     icon: PropTypes.string,
-    iconPosition: PropTypes.oneOf(['right', 'left'])
+    iconPosition: PropTypes.oneOf(['right', 'left']),
+    children: PropTypes.node,
   };
 
   static defaultProps = {
     prefixcls: 'eui-button',
     prefixicon: 'eui-icon',
-    type: 'button',
+    size: 'medium',
+    htmlType: 'button',
+    type: 'normal',
+    className: null,
+    text: null,
+    color: null,
+    onClick: null,
     loading: false,
     disabled: false,
+    href: null,
+    icon: null,
     iconPosition: 'left',
-    basic: false
+    basic: false,
+    children: null,
   };
-
-  constructor(props) {
-    super(props);
-  }
 
   handleClick = (e) => {
     const { onClick, disabled, loading } = this.props;
 
-    if(!disabled && !loading && !!onClick){
+    if (!disabled && !loading && !!onClick) {
       onClick(e);
     }
   }
@@ -54,8 +62,9 @@ export default class Button extends Component {
       className,
       children,
       size,
-      content,
+      text,
       disabled,
+      htmlType,
       type,
       color,
       loading,
@@ -66,7 +75,7 @@ export default class Button extends Component {
     } = this.props;
 
     const ElementType = (!!this.props.href && !isNil(this.props.href)) ? 'a' : 'button';
-    const AttrType = (!!this.props.href && !isNil(this.props.href)) ? undefined : (type == 'text') ? 'button' : type;
+    const AttrType = (!!this.props.href && !isNil(this.props.href)) ? undefined : (htmlType == 'text') ? 'button' : htmlType;
     const iconName = loading ? 'loading' : icon;
 
 
@@ -74,25 +83,25 @@ export default class Button extends Component {
       prefixcls,
       className,
       {
-        'small': size == 'small',
-        'large': size == 'large',
-        [`${prefixcls}-${type}`]: type == 'text',
+        [`${size}`]: size === [`${size}`],
+        [`${prefixcls}-${htmlType}`]: htmlType === 'text',
+        [`${prefixcls}-${type}`]: type,
         [`${prefixcls}-${color}`]: color,
         [`${prefixcls}-${iconName}`]: (!!loading || !!icon),
-        'basic': basic,
-        'disabled': disabled
-      }
-    )
+        basic,
+        [`${prefixcls}-disabled`]: disabled,
+      },
+    );
 
     const iconclass = classnames(
       prefixicon,
       {
         [`${prefixicon}-${iconName}`]: (!!loading || !!icon),
-        [`${prefixicon}-${iconPosition}`]: iconPosition
-      }
-    )
+        [`${prefixicon}-${iconPosition}`]: iconPosition,
+      },
+    );
 
-    const strContent = (!!content && isNil(children)) ? content : children;
+    const strContent = (!!text && isNil(children)) ? text : children;
 
 
     return (
@@ -102,9 +111,9 @@ export default class Button extends Component {
         {...others}
         onClick={this.handleClick}
       >
-        {((loading || !!icon) && iconPosition == 'left') && <i className={iconclass} />}
+        {((loading || !!icon) && iconPosition === 'left') && <i className={iconclass} />}
         {strContent}
-        {((loading || !!icon) && iconPosition == 'right') && <i className={iconclass} />}
+        {((loading || !!icon) && iconPosition === 'right') && <i className={iconclass} />}
       </ElementType>
     );
   }
