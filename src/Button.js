@@ -1,12 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import isNil from 'lodash/isNil';
-// import i18n from './i18n';
 
-
-import './style/button.scss';
-
-// const i18nDefault = 'zh-cn';
+import './style/index.scss';
 
 export default class Button extends Component {
   static propTypes = {
@@ -75,7 +71,7 @@ export default class Button extends Component {
     } = this.props;
 
     const ElementType = (!!this.props.href && !isNil(this.props.href)) ? 'a' : 'button';
-    const AttrType = (!!this.props.href && !isNil(this.props.href)) ? undefined : (htmlType == 'text') ? 'button' : htmlType;
+    const AttrType = (!!this.props.href && !isNil(this.props.href)) ? undefined : (htmlType == 'text') ? 'button' : htmlType; // eslint-disable-line
     const iconName = loading ? 'loading' : icon;
 
 

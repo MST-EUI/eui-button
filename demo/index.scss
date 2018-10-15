@@ -1,17 +1,10 @@
 @charset "UTF-8";
 
-
-.demo {
-  color: #333;
-  font-size: 16px;
-  h2 {
-    border-bottom: 1px solid #efefef;
-    padding-bottom: 10px;
-    margin-top: 15px;
-    margin-left: 10px;
-  }
-
+.eui-button-demo {
   .eui-button{
+    &:first-child {
+      margin-left: 0;
+    }
     margin-top: 10px;
     margin-left: 10px;
   }
