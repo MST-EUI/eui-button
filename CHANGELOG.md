@@ -1,5 +1,10 @@
+<a name="0.1.5"></a>
+## [0.1.5](https://github.com/MST-EUI/eui-button/compare/v0.1.4...v0.1.5) (2018-10-16)
+
+
+
 <a name="0.1.4"></a>
-## 0.1.4 (2018-10-15)
+## [0.1.4](https://github.com/MST-EUI/eui-button/compare/be29afe...v0.1.4) (2018-10-15)
 
 
 ### Bug Fixes
