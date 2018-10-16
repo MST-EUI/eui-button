@@ -2,9 +2,9 @@
 
 @import './color.scss';
 
-$radius2:       2px !default;
-$prefix:        'eui-button' !default;
-$prefixicon:    'eui-icon' !default;
+$radius2:       2px;
+$prefix:        'eui-button';
+$prefixicon:    'eui-button-icon';
 
 @mixin button-bgcolor($name:blue, $color:$blue, $text-color:$white) {
   .#{$prefix}-#{$name}{
@@ -130,10 +130,10 @@ $prefixicon:    'eui-icon' !default;
   }
   .#{$prefixicon}-loading{
     width:20px;height: 20px;
-    background:url(loading-primary.gif);
+    background:url('//web.ewt360.com/common/eui/images/loading-primary.gif');
   }
   &.basic .#{$prefixicon}-loading{
-    background:url(loading.gif);
+    background:url('//web.ewt360.com/common/eui/images/loading.gif');
   }
 }
 

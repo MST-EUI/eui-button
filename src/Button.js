@@ -26,7 +26,7 @@ export default class Button extends Component {
 
   static defaultProps = {
     prefixcls: 'eui-button',
-    prefixicon: 'eui-icon',
+    prefixicon: 'eui-button-icon',
     size: 'medium',
     htmlType: 'button',
     type: 'normal',
