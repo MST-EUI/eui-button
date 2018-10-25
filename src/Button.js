@@ -13,7 +13,7 @@ export default class Button extends Component {
     className: PropTypes.string,
     text: PropTypes.string,
     type: PropTypes.oneOf(['primary', 'secondary', 'normal']),
-    htmlType: PropTypes.oneOf(['button', 'submit', 'reset', 'text']),
+    htmlType: PropTypes.oneOf(['button', 'submit', 'reset']),
     color: PropTypes.oneOf(['blue', 'green', 'yellow', 'red', 'orange']),
     onClick: PropTypes.func,
     loading: PropTypes.bool,
@@ -71,7 +71,7 @@ export default class Button extends Component {
     } = this.props;
 
     const ElementType = (!!this.props.href && !isNil(this.props.href)) ? 'a' : 'button';
-    const AttrType = (!!this.props.href && !isNil(this.props.href)) ? undefined : (htmlType == 'text') ? 'button' : htmlType; // eslint-disable-line
+    const AttrType = (!!this.props.href && !isNil(this.props.href)) ? undefined : htmlType;
     const iconName = loading ? 'loading' : icon;
 
 
@@ -80,7 +80,6 @@ export default class Button extends Component {
       className,
       {
         [`${size}`]: size === [`${size}`],
-        [`${prefixcls}-${htmlType}`]: htmlType === 'text',
         [`${prefixcls}-${type}`]: type,
         [`${prefixcls}-${color}`]: color,
         [`${prefixcls}-${iconName}`]: (!!loading || !!icon),

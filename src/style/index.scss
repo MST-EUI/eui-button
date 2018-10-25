@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 @import './color.scss';
+@import '../../node_modules/@mistong/eui-css/variable.scss';
 
 $radius2:       2px;
 $prefix:        'eui-button';
@@ -88,17 +89,17 @@ $prefixicon:    'eui-button-icon';
   }
 
 
-  &-text {
-    color:$gray;
-    border:none 0;
-    background-color: transparent;
-    padding:0;
+  // &-text {
+  //   color:$gray;
+  //   border:none 0;
+  //   background-color: transparent;
+  //   padding:0;
 
-    &:hover{
-      background-color: transparent;
-      color:$gray;
-    }
-  }
+  //   &:hover{
+  //     background-color: transparent;
+  //     color:$gray;
+  //   }
+  // }
 
   &.basic {
     color:$gray;
@@ -113,10 +114,13 @@ $prefixicon:    'eui-button-icon';
   //   border-color:#DFE3EC;
   // }
 
-  &-loading{
-    opacity: 0.5;
-    filter: alpha(opacity=50);
-    transition: opacity .2s;
+  &-loading,
+  &-loading:active{
+    // opacity: 0.5;
+    // filter: alpha(opacity=50);
+    // transition: opacity .2s;
+    background: $btn-primary-hover;
+    border-color: $btn-primary-border-color;
   }
 
   .#{$prefixicon}+span{
@@ -132,7 +136,7 @@ $prefixicon:    'eui-button-icon';
     width:20px;height: 20px;
     background:url('//web.ewt360.com/common/eui/images/loading-primary.gif');
   }
-  &.basic .#{$prefixicon}-loading{
+  &-normal .#{$prefixicon}-loading{
     background:url('//web.ewt360.com/common/eui/images/loading.gif');
   }
 }

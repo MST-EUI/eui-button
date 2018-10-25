@@ -38,7 +38,7 @@ class DemoComponent extends React.Component {
       this.setState({
         disabled: false,
       });
-    }, 1000);
+    }, 5000);
   }
 
   handleDisabledClick = () => {
@@ -57,38 +57,30 @@ class DemoComponent extends React.Component {
 <Button className="small">small Button</Button>
 <Button>medium Button</Button>
 <Button className="large">large Button</Button>
-<Button className="big">Big Button</Button>
-`;
+<Button className="big">Big Button</Button>`;
+
     const typeCode = `import { Button } from '@mistong/eui';
 
 <Button type="primary">primary Button</Button>
 <Button type="secondary">secondary Button</Button>
 <Button type="normal">normal Button</Button>`;
+
     const disabledCode = `import { Button } from '@mistong/eui';
 
-<Button disabled className="unabled" data-arr="none">disabled 不可用按钮</Button>`;
+<Button disabled>disabled 不可用按钮</Button>`;
+
     const htmlTypeCode = `import { Button } from '@mistong/eui';
 
-<Button target="_blank">默认button按钮</Button>
+<Button>默认button按钮</Button>
 <Button htmlType="submit">submit按钮</Button>
 <Button htmlType="reset">reset按钮</Button>
-<Button href="#" target="_blank">href按钮</Button>
-<Button href="#" target="_blank" htmlType="text">href链接按钮</Button>
-<Button htmlType="text">text按钮</Button>`;
+<Button href="#" target="_blank">href按钮</Button>`;
+
     const clickCode = `import { Button } from '@mistong/eui';
 
 <Button onClick={this.handleClick} disabled={this.state.disabled}>click me</Button>
-<Button onClick={this.handleDisabledClick} disabled>Disabled click me</Button>
-<Button onClick={this.handleLoaderClick} loading={this.state.loading} color="blue">Loading click me</Button>
-<Button basic loading>默认按钮</Button>`;
-    const iconCode = `import { Button } from '@mistong/eui';
+<Button onClick={this.handleLoaderClick} loading={this.state.loading}  type="primary">Loading click me</Button>`;
 
-<Button icon="alarm">默认按钮</Button>
-<Button icon="alarm" iconPosition="right">默认按钮</Button>
-<Button href="#" icon="alarm" type="text">默认按钮</Button>`;
-    const activedCode = `import { Button } from '@mistong/eui';
-
-<Button actived>默认按钮</Button>`;
     return (
       <Demo className="eui-button-demo">
         <h2>Button 按钮组件</h2>
@@ -108,34 +100,21 @@ class DemoComponent extends React.Component {
         </Code>
 
         <Code sourceCode={disabledCode} buttonText="disabled">
-          <Button disabled className="unabled" data-arr="none">disabled 不可用按钮</Button>
+          <Button disabled>disabled 不可用按钮</Button>
         </Code>
 
         <Code sourceCode={htmlTypeCode} buttonText="htmlType & Href">
-          <Button target="_blank">默认button按钮</Button>
+          <Button>默认button按钮</Button>
           <Button htmlType="submit">submit按钮</Button>
           <Button htmlType="reset">reset按钮</Button>
           <Button href="#" target="_blank">href按钮</Button>
-          <Button href="#" target="_blank" htmlType="text">href链接按钮</Button>
-          <Button htmlType="text">text按钮</Button>
         </Code>
 
         <Code sourceCode={clickCode} buttonText="Click & Loading">
           <Button onClick={this.handleClick} disabled={this.state.disabled}>click me</Button>
-          <Button onClick={this.handleDisabledClick} disabled>Disabled click me</Button>
-          <Button onClick={this.handleLoaderClick} loading={this.state.loading} color="blue">Loading click me</Button>
-          <Button basic loading>默认按钮</Button>
+          <Button onClick={this.handleLoaderClick} loading={this.state.loading} type="primary">Loading primary click me</Button>
         </Code>
 
-        <Code sourceCode={iconCode} buttonText="Icon & IconPosition">
-          <Button icon="alarm">默认按钮</Button>
-          <Button icon="alarm" iconPosition="right">默认按钮</Button>
-          <Button href="#" icon="alarm" type="text">默认按钮</Button>
-        </Code>
-
-        <Code sourceCode={activedCode} buttonText="Actived">
-          <Button actived>默认按钮</Button>
-        </Code>
         <h3>API</h3>
         <table>
           <thead>
@@ -143,39 +122,66 @@ class DemoComponent extends React.Component {
               <th>参数</th>
               <th>说明</th>
               <th>类型</th>
+              <th>可选值</th>
               <th>默认值</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>type</td>
-              <td>背景图片类型 (<Code mode="inline">small</Code> <Code mode="inline">medium</Code> <Code mode="inline">large</Code>)</td>
+              <td>size</td>
+              <td>按钮大小 </td>
               <td>string</td>
+              <td>(<Code mode="inline">small</Code> <Code mode="inline">medium</Code> <Code mode="inline">large</Code> <Code mode="inline">big</Code>)</td>
               <td><Code mode="inline">medium</Code></td>
             </tr>
             <tr>
-              <td>children</td>
-              <td>描述文案</td>
-              <td>any</td>
-              <td>暂无数据</td>
+              <td>type</td>
+              <td>类型</td>
+              <td>string</td>
+              <td>(<Code mode="inline">primary</Code> <Code mode="inline">secondary</Code> <Code mode="inline">normal</Code>)</td>
+              <td><Code mode="inline">normal</Code></td>
+            </tr>
+            <tr>
+              <td>disabled</td>
+              <td>是否禁用</td>
+              <td>boolean</td>
+              <td>true,false</td>
+              <td>false</td>
             </tr>
             <tr>
               <td>className</td>
               <td>添加自定义class</td>
               <td>string</td>
-              <td><Code mode="inline">&#39;&#39;</Code></td>
+              <td>-</td>
+              <td>null</td>
             </tr>
             <tr>
-              <td>style</td>
-              <td>自定义样式</td>
-              <td>object</td>
-              <td><Code mode="inline">{'{}'}</Code></td>
+              <td>htmlType</td>
+              <td>设置按钮类型</td>
+              <td>string</td>
+              <td>(<Code mode="inline">button</Code> <Code mode="inline">submit</Code> <Code mode="inline">reset</Code>)</td>
+              <td><Code mode="inline">button</Code></td>
+            </tr>
+            <tr>
+              <td>loading</td>
+              <td>是否载入状态</td>
+              <td>boolean</td>
+              <td>true,false</td>
+              <td>false</td>
             </tr>
             <tr>
               <td>prefixCls</td>
               <td>样式名前缀</td>
               <td>string</td>
-              <td>eui-empty-data</td>
+              <td>-</td>
+              <td>eui-button</td>
+            </tr>
+            <tr>
+              <td>href</td>
+              <td>按钮生成a链接</td>
+              <td>string</td>
+              <td>-</td>
+              <td>null</td>
             </tr>
           </tbody>
         </table>

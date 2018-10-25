@@ -8,10 +8,9 @@ an button component for react
 ```sh
 render() {
   <div>
-    <Button 
-      content="默认按钮"
-      size="small"
-    />
+    <Button size="small">small按钮</Button>
+
+    <Button type="primary">primary按钮</Button>
   </div>
 }
 ```
@@ -24,11 +23,8 @@ render() {
 |type|类型|string|primary,secondary,normal|normal|
 |disabled|是否禁用|boolean|true,false|false|
 |className|自定义额外class|string|-|-|
-|htmlType|设置按钮类型|string|button,submit,reset,text|button|
+|htmlType|设置按钮类型|string|button,submit,reset|button|
 |loading|是否载入状态|boolean|true,false|false|
 |onClick|click事件|function|-|-|
 |href|按钮生成a链接|string|-|-|
-|icon|设置图标名称|string|-|-|
-|iconPosition|图标位置|string|left,right|left|
 
-具体用法参照demo
